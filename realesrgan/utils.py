@@ -7,6 +7,7 @@ import threading
 import torch
 from basicsr.utils.download_util import load_file_from_url
 from torch.nn import functional as F
+output = None
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -157,7 +158,6 @@ class RealESRGANer():
                 # upscale tile
                 try:
                     with torch.no_grad():
-                        output_tile = None
                         output_tile = self.model(input_tile)
                 except RuntimeError as error:
                     print('Error', error)
