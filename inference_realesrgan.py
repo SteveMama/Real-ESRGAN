@@ -151,7 +151,7 @@ def main():
         if not extension.startswith('.'):
              extension = '.' + extension
 
-        save_path = os.path.join(args.output, f'{imgname}{extension}')
+        save_path = os.path.join(args.output, '{}.{}'.format(imgname, extension))
         
         try:
             if args.face_enhance:
