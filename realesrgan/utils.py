@@ -7,6 +7,7 @@ import threading
 import torch
 from basicsr.utils.download_util import load_file_from_url
 from torch.nn import functional as F
+output_tile = None
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
