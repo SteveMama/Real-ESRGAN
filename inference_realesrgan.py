@@ -129,6 +129,7 @@ def main():
         paths = [args.input]
     else:
         paths = sorted(glob.glob(os.path.join(args.input, '*')))
+        
 
     for idx, path in enumerate(paths):
         imgname, extension = os.path.splitext(os.path.basename(path))
@@ -139,7 +140,19 @@ def main():
             img_mode = 'RGBA'
         else:
             img_mode = None
+        if not args.output.endswith(os.sep):
+            args.output += os.sep
 
+# Replace any directory separators in imgname with a safe character (such as _)
+# to prevent creating subdirectories in args.output
+        imgname = imgname.replace(os.sep, '_')
+
+# Ensure that extension contains a leading . character
+        if not extension.startswith('.'):
+             extension = '.' + extension
+
+        save_path = os.path.join(args.output, f'{imgname}{extension}')
+        
         try:
             if args.face_enhance:
                 _, _, output = face_enhancer.enhance(img, has_aligned=False, only_center_face=False, paste_back=True)
