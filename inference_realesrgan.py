@@ -169,7 +169,7 @@ def main():
             if img_mode == 'RGBA':  # RGBA images should be saved in png format
                 extension = 'png'
             if args.suffix == '':
-                save_path = os.path.join(args.output, f'{imgname}.{extension}')
+               save_path = os.path.join(args.output, '{}.{}'.format(imgname, extension))
             else:
                save_path = os.path.join(args.output, '{}.{}'.format(imgname, extension))
             cv2.imwrite(save_path, output)
