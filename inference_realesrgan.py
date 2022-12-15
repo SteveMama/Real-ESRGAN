@@ -171,7 +171,7 @@ def main():
             if args.suffix == '':
                 save_path = os.path.join(args.output, f'{imgname}.{extension}')
             else:
-                save_path = os.path.join(args.output, f'{imgname}_{args.suffix}.{extension}')
+               save_path = os.path.join(args.output, '{}.{}'.format(imgname, extension))
             cv2.imwrite(save_path, output)
 
 
